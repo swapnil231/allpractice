@@ -1,0 +1,39 @@
+<app-table (data)="onrecivedata($event)" [sendDataToTable]="onReciveDataFromCard"></app-table>
+<app-cards [sendDataToCard]="datafromTable" (sendBackDataToTableO)="onReciveDataFromCard($event)"></app-cards>
+
+
+
+<button mat-raised-button color="primary" class="mx-2" (click)="showTempForm()">TemplateDrivenForm</button>
+
+<form [appSameAs]="['email','email2']" *ngIf="hideAndShow" #myform="ngForm" (ngSubmit)="saveform(myform)">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput name="email" [(ngModel)]="myformData.email" #email="ngModel" required
+      [pattern]="emailpattern">
+    <mat-error *ngIf="email.invalid && email.errors?.['required']">email is required</mat-error>
+    <mat-error *ngIf="email.invalid && email.errors?.['pattern']">invalid email format</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>ConformEmail</mat-label>
+    <input type="email" matInput name="email2" [(ngModel)]="myformData.email2" #email2="ngModel" required
+      [pattern]="emailpattern">
+    <mat-error *ngIf="email2.invalid &&  email2.errors?.['required']">email is required</mat-error>
+    <mat-error *ngIf="email2.invalid &&  email2.errors?.['pattern']">email is required</mat-error>
+  </mat-form-field>
+
+  <mat-error *ngIf="myform.errors?.['sameAs']">Both email not same</mat-error>
+
+  <div class="justify-content-end">
+    <button type="submit" mat-raised-button color="primary">submit</button>
+    <button mat-raised-button color="primary" class="mx-2">close</button>
+  </div>
+
+</form>
+
+<br>
+<input type="text" #temp [(ngModel)]="valueinput">
+
+<button (click)="valueprnt(temp.value)">clickme</button>
+{{valueinput}}

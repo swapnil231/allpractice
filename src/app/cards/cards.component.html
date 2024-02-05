@@ -1,0 +1,27 @@
+<div class="row pt-5" *ngIf="sendDataToCard">
+  <div class="col-lg-4 col-md-6 col-lg-0 mb-5" *ngFor="let el of data">
+
+    <div class="card" style="width: 18rem;">
+      <img src="{{el.image}}" style="height: 250px;" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{el.name}}</h5>
+        <p class="card-text"><span>contact</span>{{el.mobileNo}}</p>
+        <p class="card-text"><span>email</span>{{el.email}} </p>
+        <p class="card-text"><span>location</span>{{el.location}}</p>
+        <p class="card-text"><span>salary</span>{{el.salary}} </p>
+
+
+        <div class="counter">
+          <span style="color:red ; margin-right: 5px;">Task</span>
+          <button (click)="incrige(el,el.task)" style="width:30px ;">+</button>
+          <input class="text-center" style="width:50px ;" readonly type="text" name="" id="" [value]="el.task">
+          <button (click)="decrige(el,el.task)" style="width:30px ;">-</button>
+        </div>
+
+        <a href="#" class="btn btn-primary mt-2 d-grid" type="button" (click)="sendBackDataToTable(el)">sendback
+          table</a>
+      </div>
+    </div>
+  </div>
+
+</div>

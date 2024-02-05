@@ -1,0 +1,13 @@
+<button class="btn btn-primary m-2" (click)="generateCircle()">generate circle</button>
+<button class="btn btn-primary m-2" (click)="clearAll()">clear all</button>
+<div *ngIf="ClickArr.length!==0" class="d-flex row">
+
+  <div *ngFor="let el of ClickArr ;index as i" class="col-lg-2 m-2">
+    <div id="div{{i}}">
+      <button (click)="changeCircleColorOnclick(i)" id="btn{{i}}" class="circle">btn{{i}}</button>
+      <div class="mx-5 mt-2"><span style="color: blueviolet;">CilckOnCircle</span>{{el.count}}</div>
+      <button class="btn btn-primary m-2 mx-5" (click)="remove(el)">remove</button>
+    </div>
+  </div>
+
+</div>
